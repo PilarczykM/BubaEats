@@ -5,7 +5,7 @@ namespace BubaEats.Api;
 
 [ApiController]
 [Route("auth")]
-public class AuthenticationController: ControllerBase
+public class AuthenticationController : ControllerBase
 {
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
