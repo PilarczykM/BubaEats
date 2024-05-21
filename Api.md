@@ -21,7 +21,7 @@ POST {{host}}/auth/register
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@gmail.com",
-    "password": "pwd123",
+    "password": "pwd123"
 }
 ```
 
@@ -36,7 +36,7 @@ POST {{host}}/auth/register
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@gmail.com",
-    "token": "werwff..werwer3",
+    "token": "werwff..werwer3"
 }
 ```
 
@@ -50,7 +50,7 @@ POST {{host}}/auth/login
 ``` json
 {
     "email": "john.doe@gmail.com",
-    "password": "pwd123",
+    "password": "pwd123"
 }
 ```
 
@@ -65,6 +65,6 @@ POST {{host}}/auth/login
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@gmail.com",
-    "token": "werwff..werwer3",
+    "token": "werwff..werwer3"
 }
 ```
