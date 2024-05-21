@@ -13,6 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BubaEats.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubaEats.Api", "BubaEats.Api\BubaEats.Api.csproj", "{32A44B62-7138-4AFC-8C78-69AF3FEF6606}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{79758D20-F4F8-4ED4-975B-81DA55A8EC76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Weather", "Weather", "{53A78C3B-967F-41F7-966D-503A69E58142}"
+	ProjectSection(SolutionItems) = preProject
+		GetForecast.http = GetForecast.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +49,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53A78C3B-967F-41F7-966D-503A69E58142} = {79758D20-F4F8-4ED4-975B-81DA55A8EC76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB6CFB05-6316-4262-B87E-1750A90213F1}

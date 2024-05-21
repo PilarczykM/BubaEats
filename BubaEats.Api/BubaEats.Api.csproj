@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BubaEats.Application\BubaEats.Application.csproj" />
+    <ProjectReference Include="..\BubaEats.Contracts\BubaEats.Contracts.csproj" />
+    <ProjectReference Include="..\BubaEats.Infrastructure\BubaEats.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
