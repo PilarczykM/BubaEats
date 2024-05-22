@@ -1,4 +1,4 @@
-﻿namespace BubaEats.Application;
+﻿namespace BubaEats.Application.Common.Interfaces.Services;
 
 public interface IDateTimeProvider
 {

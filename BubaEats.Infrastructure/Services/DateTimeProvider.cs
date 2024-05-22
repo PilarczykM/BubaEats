@@ -1,6 +1,6 @@
-﻿using BubaEats.Application;
+﻿using BubaEats.Application.Common.Interfaces.Services;
 
-namespace BubaEats.Infrastructure;
+namespace BubaEats.Infrastructure.Services;
 
 public class DateTimeProvider : IDateTimeProvider
 {

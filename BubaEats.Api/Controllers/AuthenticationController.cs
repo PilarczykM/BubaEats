@@ -1,8 +1,8 @@
-﻿using BubaEats.Application;
+﻿using BubaEats.Application.Services.Authentication;
 using BubaEats.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BubaEats.Api;
+namespace BubaEats.Api.Controllers;
 
 [ApiController]
 [Route("auth")]

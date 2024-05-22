@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BubaEats.Application.Services.Authentication;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BubaEats.Application;
 
