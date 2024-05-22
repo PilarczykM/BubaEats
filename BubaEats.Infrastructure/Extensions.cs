@@ -1,5 +1,7 @@
 ﻿using BubaEats.Application.Common.Interfaces.Authentication;
-using BubaEats.Infrastructure;
+using BubaEats.Application.Common.Interfaces.Services;
+using BubaEats.Infrastructure.Authentication;
+using BubaEats.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BubaEats.Application;
@@ -7,10 +9,7 @@ namespace BubaEats.Application;
 public static class Extensions
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection service)
-    {
-        service.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        service.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-        return service;
-    }
-
+        => service
+        .AddSingleton<IDateTimeProvider, DateTimeProvider>()
+        .AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 }

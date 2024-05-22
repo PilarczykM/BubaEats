@@ -1,11 +1,11 @@
-﻿using BubaEats.Application;
-using BubaEats.Application.Common.Interfaces.Authentication;
+﻿using BubaEats.Application.Common.Interfaces.Authentication;
+using BubaEats.Application.Common.Interfaces.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BubaEats.Infrastructure;
+namespace BubaEats.Infrastructure.Authentication;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {

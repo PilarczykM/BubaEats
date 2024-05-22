@@ -1,6 +1,6 @@
 ﻿using BubaEats.Application.Common.Interfaces.Authentication;
 
-namespace BubaEats.Application;
+namespace BubaEats.Application.Services.Authentication;
 
 public class AuthenticationService : IAuthenticationService
 {

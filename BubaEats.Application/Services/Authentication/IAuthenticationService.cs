@@ -1,4 +1,4 @@
-﻿namespace BubaEats.Application;
+﻿namespace BubaEats.Application.Services.Authentication;
 
 public interface IAuthenticationService
 {
