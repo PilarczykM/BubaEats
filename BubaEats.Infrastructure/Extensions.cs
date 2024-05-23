@@ -1,6 +1,8 @@
 ﻿using BubaEats.Application.Common.Interfaces.Authentication;
+using BubaEats.Application.Common.Interfaces.Persistent;
 using BubaEats.Application.Common.Interfaces.Services;
 using BubaEats.Infrastructure.Authentication;
+using BubaEats.Infrastructure.Persistent;
 using BubaEats.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +17,6 @@ public static class Extensions
         => service
         .Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName))
         .AddSingleton<IDateTimeProvider, DateTimeProvider>()
-        .AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+        .AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>()
+        .AddScoped<IUserRepository, InMemoryUserRepository>();
 }
