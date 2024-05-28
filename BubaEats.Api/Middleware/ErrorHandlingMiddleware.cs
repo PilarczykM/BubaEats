@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace BubaEats.Api;
+namespace BubaEats.Api.Middleware;
 
 public class ErrorHandlingMiddleware
 {
