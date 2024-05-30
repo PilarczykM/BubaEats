@@ -17,4 +17,9 @@
     <ProjectReference Include="..\BubaEats.Infrastructure\BubaEats.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common/" />
+    <Folder Include="Common/Errors/" />
+  </ItemGroup>
+
 </Project>

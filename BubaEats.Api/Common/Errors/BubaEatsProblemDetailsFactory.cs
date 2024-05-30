@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace BubaEats.Api.Errors;
+namespace BubaEats.Api.Common.Errors;
 
 // Copied from DefaultProblemDetailsFactory
 public class BubaEatsProblemDetailsFactory : ProblemDetailsFactory
