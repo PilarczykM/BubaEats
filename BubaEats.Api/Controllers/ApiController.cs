@@ -1,4 +1,5 @@
-﻿using ErrorOr;
+﻿using BubaEats.Api.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BubaEats.Api.Controllers;
@@ -8,7 +9,8 @@ public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
     {
-        var firstError = errors[0];
+        HttpContext.Items[HttpContextItemKeys.Errors] = errors;
+        var firstError = errors.First();
 
         var statusCode = firstError.Type switch
         {
