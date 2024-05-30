@@ -1,4 +1,4 @@
-﻿namespace BubaEats.Application.Services.Authentication;
+﻿namespace BubaEats.Application.Authentication.Common;
 
 public record class AuthenticationResult(
     Guid Id,
