@@ -1,4 +1,4 @@
-using BubaEats.Api.Errors;
+using BubaEats.Api.Common.Errors;
 using BubaEats.Application;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 

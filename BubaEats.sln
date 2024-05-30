@@ -15,11 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubaEats.Api", "BubaEats.Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{79758D20-F4F8-4ED4-975B-81DA55A8EC76}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Weather", "Weather", "{53A78C3B-967F-41F7-966D-503A69E58142}"
-	ProjectSection(SolutionItems) = preProject
-		GetForecast.http = GetForecast.http
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0C465CC6-32CC-45E5-B35F-C590EDFA3E46}"
 	ProjectSection(SolutionItems) = preProject
 		Api.md = Api.md
@@ -63,7 +58,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{53A78C3B-967F-41F7-966D-503A69E58142} = {79758D20-F4F8-4ED4-975B-81DA55A8EC76}
 		{5B678A7B-E5FB-4F8A-8B58-AA5CA701554E} = {79758D20-F4F8-4ED4-975B-81DA55A8EC76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

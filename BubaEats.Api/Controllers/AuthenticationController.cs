@@ -1,12 +1,12 @@
 ﻿using BubaEats.Application.Services.Authentication;
 using BubaEats.Contracts.Authentication;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BubaEats.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
     private readonly IAuthenticationService _authService;
 
@@ -24,27 +24,31 @@ public class AuthenticationController : ControllerBase
             request.Email,
             request.Password);
 
-        var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
-            authResult.Password,
-            authResult.Token);
-        return Ok(response);
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors)
+        );
     }
 
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
         var authResult = _authService.Login(request.Email, request.Password);
-        var response = new AuthenticationResponse(
+
+        return authResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            errors => Problem(errors)
+        );
+    }
+
+    private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+    {
+        return new AuthenticationResponse(
             authResult.Id,
             authResult.FirstName,
             authResult.LastName,
             authResult.Email,
             authResult.Password,
             authResult.Token);
-        return Ok(response);
     }
 }

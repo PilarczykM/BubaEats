@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace BubaEats.Api.Filter;
+namespace BubaEats.Api.Common.Filter;
 
 public class ErrorHandlingFilterAttribute : ExceptionFilterAttribute
 {

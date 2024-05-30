@@ -1,6 +1,8 @@
 ﻿using BubaEats.Application.Common.Interfaces.Authentication;
 using BubaEats.Application.Common.Interfaces.Persistent;
+using BubaEats.Domain.Common.Errors;
 using BubaEats.Domain.Entities;
+using ErrorOr;
 
 namespace BubaEats.Application.Services.Authentication;
 
@@ -15,18 +17,18 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
         // Validate if the user exists.
         if (_userRepository.GetUserByEmail(email) is not User user)
         {
-            throw new Exception("User with the given email does not exists.");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         // Validate the password is correct
         if (user.Password != password)
         {
-            throw new Exception("Invalid password.");
+            return new[] { Errors.Authentication.InvalidCredentials };
         }
         // Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);
@@ -39,12 +41,12 @@ public class AuthenticationService : IAuthenticationService
             token);
     }
 
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         // Validate the user doesn't exist
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with the given email already exists.");
+            return Errors.User.DuplicateEmail;
         }
         // Create user (generate unique ID) & persist in DB
         var user = new User
