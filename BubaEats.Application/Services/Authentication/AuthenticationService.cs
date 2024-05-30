@@ -1,6 +1,6 @@
 ﻿using BubaEats.Application.Common.Interfaces.Authentication;
 using BubaEats.Application.Common.Interfaces.Persistent;
-using BubaEats.Domain;
+using BubaEats.Domain.Common.Errors;
 using BubaEats.Domain.Entities;
 using ErrorOr;
 
@@ -22,13 +22,13 @@ public class AuthenticationService : IAuthenticationService
         // Validate if the user exists.
         if (_userRepository.GetUserByEmail(email) is not User user)
         {
-            throw new Exception("User with the given email does not exists.");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         // Validate the password is correct
         if (user.Password != password)
         {
-            throw new Exception("Invalid password.");
+            return new[] { Errors.Authentication.InvalidCredentials };
         }
         // Create JWT token
         var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);

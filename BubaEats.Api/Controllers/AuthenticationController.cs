@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BubaEats.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
     private readonly IAuthenticationService _authService;
 
@@ -19,7 +18,7 @@ public class AuthenticationController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authService.Register(
+        var authResult = _authService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
@@ -27,18 +26,18 @@ public class AuthenticationController : ControllerBase
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
-            _ => Problem(statusCode: StatusCodes.Status409Conflict)
+            errors => Problem(errors)
         );
     }
 
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authService.Login(request.Email, request.Password);
+        var authResult = _authService.Login(request.Email, request.Password);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
-            _ => Problem()
+            errors => Problem(errors)
         );
     }
 

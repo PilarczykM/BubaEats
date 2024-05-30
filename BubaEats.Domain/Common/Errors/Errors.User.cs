@@ -1,8 +1,8 @@
 ﻿using ErrorOr;
 
-namespace BubaEats.Domain;
+namespace BubaEats.Domain.Common.Errors;
 
-public static class Errors
+public static partial class Errors
 {
     public static class User
     {
