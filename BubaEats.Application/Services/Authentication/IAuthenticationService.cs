@@ -1,11 +1,13 @@
-﻿namespace BubaEats.Application.Services.Authentication;
+﻿using ErrorOr;
+
+namespace BubaEats.Application.Services.Authentication;
 
 public interface IAuthenticationService
 {
-    AuthenticationResult Login(
+    ErrorOr<AuthenticationResult> Login(
         string email,
         string password);
-    AuthenticationResult Register(
+    ErrorOr<AuthenticationResult> Register(
         string firstName,
         string lastName,
         string email,
