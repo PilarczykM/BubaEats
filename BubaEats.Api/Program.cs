@@ -1,18 +1,11 @@
-using BubaEats.Api.Common.Errors;
+using BubaEats.Api;
 using BubaEats.Application;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddApplication()
-                    .AddInfrastructure(builder.Configuration);
-
-    // builder.Services.AddControllers(
-    //     options => options.Filters.Add<ErrorHandlingFilterAttribute>() // Global error filter. You can use it only for one controller or even route.
-    //     );
-    builder.Services.AddControllers();
-
-    builder.Services.AddSingleton<ProblemDetailsFactory, BubaEatsProblemDetailsFactory>();
+                    .AddInfrastructure(builder.Configuration)
+                    .AddApi();
 }
 
 var app = builder.Build();
