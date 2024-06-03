@@ -10,6 +10,11 @@ public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
     {
+        if (errors.Count == 0)
+        {
+            return Problem();
+        }
+
         if (errors.All(e => e.Type == ErrorType.Validation))
         {
             return ValidationProblem(errors);
