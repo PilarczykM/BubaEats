@@ -1,7 +1,4 @@
-﻿using BubaEats.Application.Authentication.Command.Register;
-using BubaEats.Application.Authentication.Common;
-using BubaEats.Application.Common.Behaviors;
-using ErrorOr;
+﻿using BubaEats.Application.Common.Behaviors;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,9 +11,11 @@ public static class Extensions
     public static IServiceCollection AddApplication(this IServiceCollection service)
     {
         service.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        service.AddScoped<
-            IPipelineBehavior<RegisterCommand, ErrorOr<AuthenticationResult>>,
-            ValidationRegisterCommandBehavior>();
+
+        service.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
+
         service.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         return service;
     }
