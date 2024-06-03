@@ -96,7 +96,8 @@ public class BubaEatsProblemDetailsFactory : ProblemDetailsFactory
 
         // Adding custom values to error response.
         var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
-        if (errors is not null) {
+        if (errors is not null)
+        {
             problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
         }
 
