@@ -1,6 +1,7 @@
 ﻿using BubaEats.Api.Common.Http;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BubaEats.Api.Controllers;
 
@@ -9,6 +10,11 @@ public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
     {
+        if (errors.All(e => e.Type == ErrorType.Validation))
+        {
+            return ValidationProblem(errors);
+        }
+
         HttpContext.Items[HttpContextItemKeys.Errors] = errors;
         var firstError = errors.First();
 
@@ -25,4 +31,15 @@ public class ApiController : ControllerBase
         return Problem(statusCode: statusCode, title: firstError.Description);
     }
 
+    private IActionResult ValidationProblem(List<Error> errors)
+    {
+        var modelStateDictionary = new ModelStateDictionary();
+
+        foreach (var e in errors)
+        {
+            modelStateDictionary.AddModelError(e.Code, e.Description);
+        }
+
+        return ValidationProblem(modelStateDictionary);
+    }
 }
