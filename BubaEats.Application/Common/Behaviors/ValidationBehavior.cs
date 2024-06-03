@@ -9,7 +9,7 @@ public class ValidationBehavior<TRequest, TResponse> :
     where TRequest: IRequest<TResponse>
     where TResponse: IErrorOr
 {
-    private readonly IValidator<TRequest> _validator;
+    private readonly IValidator<TRequest>? _validator;
 
     public ValidationBehavior(IValidator<TRequest>? validator)
     {
